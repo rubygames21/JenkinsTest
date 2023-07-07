@@ -2,24 +2,24 @@ pipeline {
   agent any
 
   stages {
-    stage('Build and Run') {
+    stage('Build') {
       steps {
         script {
-          def imageName = 'sportier2002/testjenkins:latest'
-          def containerName = 'my-jenkins-container'
+          def imageName = 'mon-image-docker:latest'
+          def containerName = 'mon-container'
           
           // Clone the repository
           checkout scm
           
           // Build the Docker image
-          sh 'docker build -t ${imageName} .'
+          sh "docker build -t ${imageName} ."
           
           // Stop and remove the existing container (if any)
-          sh 'docker stop ${containerName} || true'
-          sh 'docker rm ${containerName} || true'
+          sh "docker stop ${containerName} || true"
+          sh "docker rm ${containerName} || true"
           
           // Run the Docker container
-          sh "docker run -d --name ${containerName} -p 8080:80 ${imageName}"
+          sh "docker run -d --name ${containerName} ${imageName}"
         }
       }
     }
