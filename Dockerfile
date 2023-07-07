@@ -5,3 +5,4 @@ RUN apt-get install -y nodejs
 CMD ["node", "--version"]
 CMD ["ls"]
 CMD ["ls"]
+CMD ["ls"]
