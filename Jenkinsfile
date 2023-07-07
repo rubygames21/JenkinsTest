@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   stages {
-    stage('Build') {
+    stage('Build2') {
       steps {
         script {
           def imageName = 'mon-image-docker:latest'
