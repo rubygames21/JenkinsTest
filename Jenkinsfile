@@ -19,7 +19,7 @@ pipeline {
           sh "docker rm ${containerName} || true"
           
           // Run the Docker container
-          sh "docker run -d --name ${containerName} ${imageName}"
+          sh "docker run -t -d --name ${containerName} ${imageName}"
         }
       }
     }
